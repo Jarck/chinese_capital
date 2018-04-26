@@ -29,7 +29,7 @@ transform number to chinese numerals
 transform number to chinese money
 
 ```ruby
-  ChineseCapital.to_menoy(10103)  # => 壹万零壹佰零叁元整
+  ChineseCapital.to_money(10103)  # => 壹万零壹佰零叁元整
 ```
 
 ## License

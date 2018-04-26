@@ -29,7 +29,7 @@ Or install it yourself as:
 数字转大写金额
 
 ```ruby
-  ChineseCapital.to_menoy(10103)  # => 壹万零壹佰零叁元整
+  ChineseCapital.to_money(10103)  # => 壹万零壹佰零叁元整
 ```
 
 ## License
