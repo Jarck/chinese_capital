@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'pry'
 
 describe ChineseCapital do
   context 'to chinese capital' do
@@ -126,6 +127,35 @@ describe ChineseCapital do
 
     it "should go works for 100103" do
       expect(ChineseCapital.to_money(100103)).to eq('壹拾万零壹佰零叁元整')
+    end
+  end
+
+  context 'use configure' do
+    before do
+      ChineseCapital::Number.configure do |config|
+        config.normal = {
+          figure: '〇一二三四五六七八九'
+        }
+        config.money = {
+          unit: '美元'
+        }
+      end
+    end
+
+    it "should go works for -1.003" do
+      expect(ChineseCapital.parse(-1.003)).to eq('负一点〇〇三')
+    end
+
+    it "should go works for 10103" do
+      expect(ChineseCapital.parse(10103)).to eq('一万〇一百〇三')
+    end
+
+    it "should go works for 3" do
+      expect(ChineseCapital.to_money(3)).to eq('叁美元整')
+    end
+
+    it "should go works for 10103" do
+      expect(ChineseCapital.to_money(10103)).to eq('壹万零壹佰零叁美元整')
     end
   end
 end
